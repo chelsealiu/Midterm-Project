@@ -10,12 +10,19 @@
 		5E6B04E51B4857B000AAA2FE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E6B04E41B4857B000AAA2FE /* main.m */; };
 		5E6B04E81B4857B000AAA2FE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E6B04E71B4857B000AAA2FE /* AppDelegate.m */; };
 		5E6B04EB1B4857B000AAA2FE /* Flicker_Test.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5E6B04E91B4857B000AAA2FE /* Flicker_Test.xcdatamodeld */; };
-		5E6B04EE1B4857B000AAA2FE /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E6B04ED1B4857B000AAA2FE /* MasterViewController.m */; };
-		5E6B04F11B4857B000AAA2FE /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E6B04F01B4857B000AAA2FE /* DetailViewController.m */; };
-		5E6B04F41B4857B000AAA2FE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E6B04F21B4857B000AAA2FE /* Main.storyboard */; };
 		5E6B04F61B4857B000AAA2FE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E6B04F51B4857B000AAA2FE /* Images.xcassets */; };
 		5E6B04F91B4857B000AAA2FE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E6B04F71B4857B000AAA2FE /* LaunchScreen.xib */; };
 		5E6B05051B4857B000AAA2FE /* Flicker_TestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E6B05041B4857B000AAA2FE /* Flicker_TestTests.m */; };
+		5E6B05451B4873A800AAA2FE /* FlickrPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E6B05441B4873A800AAA2FE /* FlickrPhoto.m */; };
+		5E6B05481B4874D000AAA2FE /* AnaglyphsCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E6B05471B4874D000AAA2FE /* AnaglyphsCollectionViewController.m */; };
+		5E6B054E1B487F3200AAA2FE /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E6B054D1B487F3200AAA2FE /* MasterViewController.m */; };
+		5E6B05511B48815000AAA2FE /* AnaglyphCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E6B05501B48815000AAA2FE /* AnaglyphCell.m */; };
+		5E6B05531B489C3600AAA2FE /* angry_pusheen.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5E6B05521B489C3600AAA2FE /* angry_pusheen.jpg */; };
+		5E6B05571B489C8D00AAA2FE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E6B05561B489C8D00AAA2FE /* Main.storyboard */; };
+		5E6B055A1B4ADA8200AAA2FE /* AnaglyphEnlargedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E6B05591B4ADA8200AAA2FE /* AnaglyphEnlargedViewController.m */; };
+		5E6B055D1B4B0B7A00AAA2FE /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E6B055C1B4B0B7A00AAA2FE /* LocationViewController.m */; };
+		5E6B055F1B4B0C0700AAA2FE /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E6B055E1B4B0C0700AAA2FE /* MapKit.framework */; };
+		5E6B05611B4B2CC700AAA2FE /* Location.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 5E6B05601B4B2CC700AAA2FE /* Location.gpx */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,16 +42,27 @@
 		5E6B04E61B4857B000AAA2FE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5E6B04E71B4857B000AAA2FE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		5E6B04EA1B4857B000AAA2FE /* Flicker_Test.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Flicker_Test.xcdatamodel; sourceTree = "<group>"; };
-		5E6B04EC1B4857B000AAA2FE /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
-		5E6B04ED1B4857B000AAA2FE /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
-		5E6B04EF1B4857B000AAA2FE /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
-		5E6B04F01B4857B000AAA2FE /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
-		5E6B04F31B4857B000AAA2FE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5E6B04F51B4857B000AAA2FE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		5E6B04F81B4857B000AAA2FE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		5E6B04FE1B4857B000AAA2FE /* Flicker TestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Flicker TestTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E6B05031B4857B000AAA2FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5E6B05041B4857B000AAA2FE /* Flicker_TestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Flicker_TestTests.m; sourceTree = "<group>"; };
+		5E6B05431B4873A800AAA2FE /* FlickrPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrPhoto.h; sourceTree = "<group>"; };
+		5E6B05441B4873A800AAA2FE /* FlickrPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrPhoto.m; sourceTree = "<group>"; };
+		5E6B05461B4874D000AAA2FE /* AnaglyphsCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnaglyphsCollectionViewController.h; sourceTree = "<group>"; };
+		5E6B05471B4874D000AAA2FE /* AnaglyphsCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnaglyphsCollectionViewController.m; sourceTree = "<group>"; };
+		5E6B054C1B487F3200AAA2FE /* MasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
+		5E6B054D1B487F3200AAA2FE /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
+		5E6B054F1B48815000AAA2FE /* AnaglyphCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnaglyphCell.h; sourceTree = "<group>"; };
+		5E6B05501B48815000AAA2FE /* AnaglyphCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnaglyphCell.m; sourceTree = "<group>"; };
+		5E6B05521B489C3600AAA2FE /* angry_pusheen.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = angry_pusheen.jpg; sourceTree = "<group>"; };
+		5E6B05561B489C8D00AAA2FE /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		5E6B05581B4ADA8200AAA2FE /* AnaglyphEnlargedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnaglyphEnlargedViewController.h; sourceTree = "<group>"; };
+		5E6B05591B4ADA8200AAA2FE /* AnaglyphEnlargedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnaglyphEnlargedViewController.m; sourceTree = "<group>"; };
+		5E6B055B1B4B0B7A00AAA2FE /* LocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationViewController.h; sourceTree = "<group>"; };
+		5E6B055C1B4B0B7A00AAA2FE /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
+		5E6B055E1B4B0C0700AAA2FE /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		5E6B05601B4B2CC700AAA2FE /* Location.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Location.gpx; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E6B055F1B4B0C0700AAA2FE /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +87,7 @@
 		5E6B04D61B4857B000AAA2FE = {
 			isa = PBXGroup;
 			children = (
+				5E6B055E1B4B0C0700AAA2FE /* MapKit.framework */,
 				5E6B04E11B4857B000AAA2FE /* Flicker Test */,
 				5E6B05011B4857B000AAA2FE /* Flicker TestTests */,
 				5E6B04E01B4857B000AAA2FE /* Products */,
@@ -88,11 +108,21 @@
 			children = (
 				5E6B04E61B4857B000AAA2FE /* AppDelegate.h */,
 				5E6B04E71B4857B000AAA2FE /* AppDelegate.m */,
-				5E6B04EC1B4857B000AAA2FE /* MasterViewController.h */,
-				5E6B04ED1B4857B000AAA2FE /* MasterViewController.m */,
-				5E6B04EF1B4857B000AAA2FE /* DetailViewController.h */,
-				5E6B04F01B4857B000AAA2FE /* DetailViewController.m */,
-				5E6B04F21B4857B000AAA2FE /* Main.storyboard */,
+				5E6B054C1B487F3200AAA2FE /* MasterViewController.h */,
+				5E6B054D1B487F3200AAA2FE /* MasterViewController.m */,
+				5E6B05461B4874D000AAA2FE /* AnaglyphsCollectionViewController.h */,
+				5E6B05471B4874D000AAA2FE /* AnaglyphsCollectionViewController.m */,
+				5E6B05581B4ADA8200AAA2FE /* AnaglyphEnlargedViewController.h */,
+				5E6B05591B4ADA8200AAA2FE /* AnaglyphEnlargedViewController.m */,
+				5E6B055B1B4B0B7A00AAA2FE /* LocationViewController.h */,
+				5E6B055C1B4B0B7A00AAA2FE /* LocationViewController.m */,
+				5E6B054F1B48815000AAA2FE /* AnaglyphCell.h */,
+				5E6B05501B48815000AAA2FE /* AnaglyphCell.m */,
+				5E6B05431B4873A800AAA2FE /* FlickrPhoto.h */,
+				5E6B05441B4873A800AAA2FE /* FlickrPhoto.m */,
+				5E6B05561B489C8D00AAA2FE /* Main.storyboard */,
+				5E6B05521B489C3600AAA2FE /* angry_pusheen.jpg */,
+				5E6B05601B4B2CC700AAA2FE /* Location.gpx */,
 				5E6B04F51B4857B000AAA2FE /* Images.xcassets */,
 				5E6B04F71B4857B000AAA2FE /* LaunchScreen.xib */,
 				5E6B04E91B4857B000AAA2FE /* Flicker_Test.xcdatamodeld */,
@@ -207,9 +237,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5E6B04F41B4857B000AAA2FE /* Main.storyboard in Resources */,
+				5E6B05531B489C3600AAA2FE /* angry_pusheen.jpg in Resources */,
 				5E6B04F91B4857B000AAA2FE /* LaunchScreen.xib in Resources */,
+				5E6B05611B4B2CC700AAA2FE /* Location.gpx in Resources */,
 				5E6B04F61B4857B000AAA2FE /* Images.xcassets in Resources */,
+				5E6B05571B489C8D00AAA2FE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,10 +259,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5E6B04F11B4857B000AAA2FE /* DetailViewController.m in Sources */,
-				5E6B04EE1B4857B000AAA2FE /* MasterViewController.m in Sources */,
+				5E6B055A1B4ADA8200AAA2FE /* AnaglyphEnlargedViewController.m in Sources */,
+				5E6B055D1B4B0B7A00AAA2FE /* LocationViewController.m in Sources */,
+				5E6B05481B4874D000AAA2FE /* AnaglyphsCollectionViewController.m in Sources */,
 				5E6B04EB1B4857B000AAA2FE /* Flicker_Test.xcdatamodeld in Sources */,
 				5E6B04E81B4857B000AAA2FE /* AppDelegate.m in Sources */,
+				5E6B05451B4873A800AAA2FE /* FlickrPhoto.m in Sources */,
+				5E6B054E1B487F3200AAA2FE /* MasterViewController.m in Sources */,
+				5E6B05511B48815000AAA2FE /* AnaglyphCell.m in Sources */,
 				5E6B04E51B4857B000AAA2FE /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -254,14 +290,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		5E6B04F21B4857B000AAA2FE /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5E6B04F31B4857B000AAA2FE /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		5E6B04F71B4857B000AAA2FE /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
