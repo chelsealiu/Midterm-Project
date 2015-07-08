@@ -19,5 +19,7 @@
 @property (strong, nonatomic) NSNumber *latitude;
 @property (strong, nonatomic) NSString *dateTaken;
 @property (strong, nonatomic) NSString *title;
+@property (strong, nonatomic) NSArray *tags;
+@property (strong, nonatomic) NSString *username;
 
 @end

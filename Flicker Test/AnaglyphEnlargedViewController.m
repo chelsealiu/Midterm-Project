@@ -32,7 +32,6 @@
     self.scrollView.maximumZoomScale = 2;
     
     NSURL *photoURL = [NSURL URLWithString: [NSString stringWithFormat:@"https://farm%@.static.flickr.com/%@/%@_%@_z.jpg", self.detailItem.farm, self.detailItem.server, self.detailItem.photoID, self.detailItem.secret]];
-    NSLog(@"%@", photoURL);
     NSData *photoData = [NSData dataWithContentsOfURL:photoURL];
     self.imageView.image = [UIImage imageWithData:photoData];
 

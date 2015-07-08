@@ -13,4 +13,8 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *refreshButton;
+
+
+
 @end

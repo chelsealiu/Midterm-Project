@@ -40,6 +40,7 @@
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self; //must conform to protocol in HEADER as well as storyboard!!!
     self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
+    self.mapView.showsUserLocation = YES;
 
     //check user's current settings: enabled? -> allows access?
     if ([CLLocationManager locationServicesEnabled]) {
@@ -66,6 +67,7 @@
 //zoom to show user's current location when user didUpdateLocations
 
 - (void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    
     CLLocation *currentLocation = [locations lastObject]; //most recent update
     
     if (!self.setInitialLocation) {
@@ -83,7 +85,7 @@
     if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied) {
         
         //if user wants to be tracked but denied permission to be tracked, make alert popup to open settings
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Denied" message:@"Please enable us to stalk where you are" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Denied" message:@"Your location settings are turned off." preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
         [alertController addAction:cancelAction];
         UIAlertAction *openAction = [UIAlertAction actionWithTitle:@"Open Settings" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
@@ -100,7 +102,9 @@
         
     }
     
-    if (self.mapView.userLocation) {    //Check if user is already zoomed in to current location
+    if (self.mapView.userLocation) {
+        NSLog(@"TRIES to print userlocation %@", self.mapView.userLocation);
+        //Check if user is already zoomed in to current location
         [self.mapView setCenterCoordinate:self.mapView.userLocation.coordinate animated:YES];
     }
 }
