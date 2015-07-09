@@ -2,16 +2,18 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "pointer@1x.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "401-globe@3x.png"
+      "filename" : "pointer@2x.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "3x"
+      "scale" : "3x",
+      "filename" : "pointer@3x.png"
     }
   ],
   "info" : {
