@@ -11,6 +11,8 @@
 
 @interface AnaglyphEnlargedViewController ()
 
+@property (strong, nonatomic) NSString *buttonTitle;
+-(void)showInfo;
 
 @end
 
@@ -27,9 +29,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    UIBarButtonItem *mapButton=[[UIBarButtonItem alloc] initWithTitle:@"Show On Map" style:UIBarButtonItemStylePlain target:self action:@selector(shouldPerformSegueWithIdentifier:sender:)];
+    
+    UIBarButtonItem *infoButton=[[UIBarButtonItem alloc] initWithTitle:@"Show Info" style:UIBarButtonItemStylePlain target:self action:@selector(shouldPerformSegueWithIdentifier:sender:)];
+    
     self.scrollView.delegate = self;
     self.scrollView.minimumZoomScale = 1;
-    self.scrollView.maximumZoomScale = 2;
+    self.scrollView.maximumZoomScale = 4;
     
     NSURL *photoURL = [NSURL URLWithString: [NSString stringWithFormat:@"https://farm%@.static.flickr.com/%@/%@_%@_z.jpg", self.detailItem.farm, self.detailItem.server, self.detailItem.photoID, self.detailItem.secret]];
     NSData *photoData = [NSData dataWithContentsOfURL:photoURL];
@@ -39,42 +45,47 @@
     self.scrollView.userInteractionEnabled = YES;
 
     [self viewForZoomingInScrollView:self.scrollView];
-
+    
+    if ([self.detailItem.longitude doubleValue] == 0 && [self.detailItem.latitude doubleValue] == 0) {
+        
+        self.navigationItem.rightBarButtonItem = infoButton;
+        
+    } else {
+        
+        self.navigationItem.rightBarButtonItem = mapButton;
+    }
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-
 }
 
 - (UIImageView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
     return self.imageView;
 }
 
-
 #pragma mark - Navigation
 
-//in sequence:
-
 -(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
-    identifier = @"showMap";
-    if ([self.detailItem.longitude integerValue] == 0 && [self.detailItem.latitude integerValue] == 0) {
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Location unavailable for this image. :(" message:[NSString stringWithFormat:@"Image Name: %@\nDate Taken: %@", self.detailItem.title, self.detailItem.dateTaken] preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
-        [alertController addAction:cancelAction];
-        [self presentViewController:alertController animated:YES completion:nil];
-        NSLog(@"%@, %@", self.detailItem.latitude, self.detailItem.longitude);
+    
+    if ([self.navigationItem.rightBarButtonItem.title isEqualToString:@"Show Info"]) {
+        [self showInfo];
         return NO;
     } else {
-        NSLog(@"%@, %@", self.detailItem.latitude, self.detailItem.longitude);
+        [self performSegueWithIdentifier:@"showMap" sender:sender];
         return YES;
-        
     }
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+- (void) showInfo{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"%@", self.detailItem.title] message:[NSString stringWithFormat:@"Taken by user: %@\nDate taken: %@", self.detailItem.username, self.detailItem.dateTaken] preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
+    [alertController addAction:cancelAction];
+    [self presentViewController:alertController animated:YES completion:nil];
     
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     [[segue destinationViewController] setDetailItem:self.detailItem];
 }
 

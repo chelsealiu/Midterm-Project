@@ -12,20 +12,20 @@
 #import "AnaglyphCell.h"
 
 
-@interface AnaglyphsCollectionViewController () <UISearchBarDelegate, UISearchResultsUpdating, UILayoutSupport>
+@interface AnaglyphsCollectionViewController () <UISearchBarDelegate>
 
 @property (nonatomic, strong) NSArray *anaglyphObjects;
 @property (nonatomic, strong) UISearchController *searchController;
 @property(nonatomic, strong) NSArray *allObjects;
-//@property(nonatomic, strong) NSMutableArray *searches;
+@property(nonatomic, strong) NSMutableArray *favouriteAnaglyphs;
 @property (nonatomic, strong) UITextField *textField;
 @property (nonatomic) BOOL finishedEditingSearch;
 @property (nonatomic, strong)  UITextField *textFieldInput;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
-@property (nonatomic) BOOL enterPressed;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @end
-
 
 
 @implementation AnaglyphsCollectionViewController
@@ -34,14 +34,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.collectionView setContentOffset:CGPointMake(0, 44)];
-
     [self refreshView];
-    [self configureSearchBar];
-    
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.collectionView addSubview:self.refreshControl];
     [self.refreshControl addTarget:self action:@selector(refreshView) forControlEvents:UIControlEventValueChanged];
     self.collectionView.alwaysBounceVertical = YES;
+    
     
 }
 
@@ -97,7 +95,6 @@
                 anaglyphPhoto.dateTaken = anaglyphDict[@"datetaken"];
                 anaglyphPhoto.username = anaglyphDict[@"ownername"]; //scope 2
                 anaglyphPhoto.tags = [anaglyphDict[@"tags"] componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]; //scope 3
-                NSLog(@"%@", anaglyphPhoto.tags);
                 
                 [tempAnaglyphArray addObject:anaglyphPhoto];
             }
@@ -135,13 +132,20 @@
     return self.anaglyphObjects.count;
 }
 
-
 #pragma mark <UICollectionViewDataSource>
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     AnaglyphCell *anaglyphCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"AnaglyphCell" forIndexPath:indexPath];
     FlickrPhoto *flickrPhoto = self.anaglyphObjects[indexPath.row];
+    
+    if ([flickrPhoto.longitude doubleValue] != 0 && [flickrPhoto.latitude doubleValue] != 0) {
+        anaglyphCell.iconImageView.hidden = NO;
+    }
+    else {
+        anaglyphCell.iconImageView.hidden = YES;
+    }
+    
     NSURL *imageURL = flickrPhoto.photoURL;
     anaglyphCell.imageView.image = nil;
     [anaglyphCell.task cancel]; //cancel
@@ -175,7 +179,7 @@
 }
 
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return UIEdgeInsetsMake(44, 11, 11, 11);
+    return UIEdgeInsetsMake(11, 11, 11, 11);
 }
 
 #pragma mark - Navigation
@@ -188,6 +192,8 @@
     }
 }
 
+
+
 #pragma mark Search Controller
 
 -(void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
@@ -196,61 +202,20 @@
     [searchBar resignFirstResponder];
 }
 
--(void) configureSearchBar {
-    
-    self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
-    [self.collectionView setContentOffset:CGPointMake(0, 44)];
-    self.searchController.searchResultsUpdater = self;
-    self.searchController.dimsBackgroundDuringPresentation = NO;
-    self.definesPresentationContext = YES;
-    self.searchController.searchBar.delegate = self;
-    self.searchController.active = YES;
-    [self.view addSubview:self.searchController.searchBar];
-    self.searchController.searchBar.placeholder = @"Search by title, tags, username ...";
-    self.searchController.searchBar.showsScopeBar = YES;
-    self.searchController.searchBar.scopeButtonTitles = [NSArray arrayWithObjects:@"Title",@"Tags",@"Username", nil];
-    
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.topLayoutGuide attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.searchController.searchBar attribute:NSLayoutAttributeTop multiplier:1.0 constant:-10]];
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.searchController.searchBar attribute:NSLayoutAttributeLeft multiplier:1.0 constant:-10]];
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.searchController.searchBar attribute:NSLayoutAttributeRight multiplier:1.0 constant:10]];
-    
-    [self.searchController.searchBar setTranslatesAutoresizingMaskIntoConstraints:NO];
-}
 
-- (void)updateSearchResultsForSearchController:(UISearchController *)searchController
-{
-    NSString *searchString = self.searchController.searchBar.text;
-    NSLog(@"%@", searchString);
+-(void)searchBar:(UISearchBar*)searchBar textDidChange:(NSString*)text {
+    NSString *searchString = self.searchBar.text;
     
     if ([searchString isEqualToString:@""]) {
         return;
-    } else if (self.searchController.searchBar.selectedScopeButtonIndex == 0) {
+    } else if (self.segmentedControl.selectedSegmentIndex == 0) {
         self.anaglyphObjects = [self.allObjects filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"title CONTAINS[c] %@", searchString]];
-    } else if (self.searchController.searchBar.selectedScopeButtonIndex == 1) {
+    } else if (self.segmentedControl.selectedSegmentIndex == 1) {
         self.anaglyphObjects = [self.allObjects filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"ANY tags CONTAINS[c] %@", searchString]];
-    } else if (self.searchController.searchBar.selectedScopeButtonIndex == 2) {
+    } else if (self.segmentedControl.selectedSegmentIndex == 2) {
         self.anaglyphObjects = [self.allObjects filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"username CONTAINS[c] %@", searchString]];
     }
     [self.collectionView reloadData];
-}
-
-- (void)searchBar:(UISearchBar *)searchBar selectedScopeButtonIndexDidChange:(NSInteger)selectedScope
-{
-    [self updateSearchResultsForSearchController:self.searchController];
-}
-
-- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar {
-    searchBar.showsCancelButton = YES;
-    searchBar.showsScopeBar = YES;
-    [searchBar setShowsCancelButton:YES];
-    return YES;
-}
-
-- (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar {
-    searchBar.showsCancelButton = NO;
-    searchBar.showsScopeBar = NO;
-    [searchBar setShowsCancelButton:NO animated:YES];
-    return YES;
 }
 
 

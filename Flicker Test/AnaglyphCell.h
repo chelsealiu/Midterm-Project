@@ -12,5 +12,6 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) NSURLSessionDataTask *task;
+@property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
 
 @end

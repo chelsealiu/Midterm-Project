@@ -23,6 +23,14 @@
 		5E6B055D1B4B0B7A00AAA2FE /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E6B055C1B4B0B7A00AAA2FE /* LocationViewController.m */; };
 		5E6B055F1B4B0C0700AAA2FE /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E6B055E1B4B0C0700AAA2FE /* MapKit.framework */; };
 		5E6B05611B4B2CC700AAA2FE /* Location.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 5E6B05601B4B2CC700AAA2FE /* Location.gpx */; };
+		5E6B05981B4EEB4500AAA2FE /* whiteicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E6B05971B4EEB4500AAA2FE /* whiteicon.png */; };
+		5E6B059A1B4EF8A800AAA2FE /* zoom_in.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E6B05991B4EF8A800AAA2FE /* zoom_in.png */; };
+		5E6B059C1B4EF8AE00AAA2FE /* zoom_out.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E6B059B1B4EF8AE00AAA2FE /* zoom_out.png */; };
+		5EB8C5E71B4F12F100A26664 /* map_pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EB8C5E61B4F12F100A26664 /* map_pin.png */; };
+		5EB8C5EB1B4F143100A26664 /* pointer.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EB8C5EA1B4F143100A26664 /* pointer.png */; };
+		5EB8C5EE1B4F19C200A26664 /* FavouritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB8C5ED1B4F19C200A26664 /* FavouritesViewController.m */; };
+		5EB8C5F11B4F1A1B00A26664 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB8C5F01B4F1A1B00A26664 /* CollectionViewController.m */; };
+		5EB8C5F31B4F1D5D00A26664 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EB8C5F21B4F1D5D00A26664 /* heart.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +71,15 @@
 		5E6B055C1B4B0B7A00AAA2FE /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
 		5E6B055E1B4B0C0700AAA2FE /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		5E6B05601B4B2CC700AAA2FE /* Location.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Location.gpx; sourceTree = "<group>"; };
+		5E6B05971B4EEB4500AAA2FE /* whiteicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteicon.png; sourceTree = "<group>"; };
+		5E6B05991B4EF8A800AAA2FE /* zoom_in.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zoom_in.png; sourceTree = "<group>"; };
+		5E6B059B1B4EF8AE00AAA2FE /* zoom_out.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zoom_out.png; sourceTree = "<group>"; };
+		5EB8C5E61B4F12F100A26664 /* map_pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_pin.png; sourceTree = "<group>"; };
+		5EB8C5EA1B4F143100A26664 /* pointer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pointer.png; sourceTree = "<group>"; };
+		5EB8C5EC1B4F19C200A26664 /* FavouritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavouritesViewController.h; sourceTree = "<group>"; };
+		5EB8C5ED1B4F19C200A26664 /* FavouritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavouritesViewController.m; sourceTree = "<group>"; };
+		5EB8C5F01B4F1A1B00A26664 /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
+		5EB8C5F21B4F1D5D00A26664 /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,14 +133,23 @@
 				5E6B05591B4ADA8200AAA2FE /* AnaglyphEnlargedViewController.m */,
 				5E6B055B1B4B0B7A00AAA2FE /* LocationViewController.h */,
 				5E6B055C1B4B0B7A00AAA2FE /* LocationViewController.m */,
+				5EB8C5EC1B4F19C200A26664 /* FavouritesViewController.h */,
+				5EB8C5ED1B4F19C200A26664 /* FavouritesViewController.m */,
 				5E6B054F1B48815000AAA2FE /* AnaglyphCell.h */,
 				5E6B05501B48815000AAA2FE /* AnaglyphCell.m */,
 				5E6B05431B4873A800AAA2FE /* FlickrPhoto.h */,
 				5E6B05441B4873A800AAA2FE /* FlickrPhoto.m */,
 				5E6B05561B489C8D00AAA2FE /* Main.storyboard */,
+				5EB8C5F01B4F1A1B00A26664 /* CollectionViewController.m */,
 				5E6B05521B489C3600AAA2FE /* angry_pusheen.jpg */,
 				5E6B05601B4B2CC700AAA2FE /* Location.gpx */,
+				5EB8C5E61B4F12F100A26664 /* map_pin.png */,
+				5EB8C5EA1B4F143100A26664 /* pointer.png */,
+				5E6B059B1B4EF8AE00AAA2FE /* zoom_out.png */,
+				5E6B05991B4EF8A800AAA2FE /* zoom_in.png */,
 				5E6B04F51B4857B000AAA2FE /* Images.xcassets */,
+				5EB8C5F21B4F1D5D00A26664 /* heart.png */,
+				5E6B05971B4EEB4500AAA2FE /* whiteicon.png */,
 				5E6B04F71B4857B000AAA2FE /* LaunchScreen.xib */,
 				5E6B04E91B4857B000AAA2FE /* Flicker_Test.xcdatamodeld */,
 				5E6B04E21B4857B000AAA2FE /* Supporting Files */,
@@ -238,10 +264,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E6B05531B489C3600AAA2FE /* angry_pusheen.jpg in Resources */,
+				5EB8C5F31B4F1D5D00A26664 /* heart.png in Resources */,
 				5E6B04F91B4857B000AAA2FE /* LaunchScreen.xib in Resources */,
 				5E6B05611B4B2CC700AAA2FE /* Location.gpx in Resources */,
+				5E6B059C1B4EF8AE00AAA2FE /* zoom_out.png in Resources */,
 				5E6B04F61B4857B000AAA2FE /* Images.xcassets in Resources */,
+				5E6B05981B4EEB4500AAA2FE /* whiteicon.png in Resources */,
+				5E6B059A1B4EF8A800AAA2FE /* zoom_in.png in Resources */,
 				5E6B05571B489C8D00AAA2FE /* Main.storyboard in Resources */,
+				5EB8C5E71B4F12F100A26664 /* map_pin.png in Resources */,
+				5EB8C5EB1B4F143100A26664 /* pointer.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,6 +291,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EB8C5EE1B4F19C200A26664 /* FavouritesViewController.m in Sources */,
 				5E6B055A1B4ADA8200AAA2FE /* AnaglyphEnlargedViewController.m in Sources */,
 				5E6B055D1B4B0B7A00AAA2FE /* LocationViewController.m in Sources */,
 				5E6B05481B4874D000AAA2FE /* AnaglyphsCollectionViewController.m in Sources */,
@@ -267,6 +300,7 @@
 				5E6B05451B4873A800AAA2FE /* FlickrPhoto.m in Sources */,
 				5E6B054E1B487F3200AAA2FE /* MasterViewController.m in Sources */,
 				5E6B05511B48815000AAA2FE /* AnaglyphCell.m in Sources */,
+				5EB8C5F11B4F1A1B00A26664 /* CollectionViewController.m in Sources */,
 				5E6B04E51B4857B000AAA2FE /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -454,6 +488,7 @@
 				5E6B050A1B4857B000AAA2FE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5E6B050B1B4857B000AAA2FE /* Build configuration list for PBXNativeTarget "Flicker TestTests" */ = {
 			isa = XCConfigurationList;
@@ -462,6 +497,7 @@
 				5E6B050D1B4857B000AAA2FE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

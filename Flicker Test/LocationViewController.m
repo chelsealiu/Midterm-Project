@@ -10,11 +10,14 @@
 
 @import MapKit;
 
-@interface LocationViewController () <CLLocationManagerDelegate>
+@interface LocationViewController () <CLLocationManagerDelegate, MKMapViewDelegate>
 
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (nonatomic) BOOL setInitialLocation;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *zoomButton;
+@property (strong, nonatomic) CLLocation *currentLocation;
+@property (nonatomic) int tapCount;
 
 @end
 
@@ -36,23 +39,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.setInitialLocation = NO;
     self.locationManager = [[CLLocationManager alloc] init];
-    self.locationManager.delegate = self; //must conform to protocol in HEADER as well as storyboard!!!
+    self.locationManager.delegate = self;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
-    self.mapView.showsUserLocation = YES;
-
-    //check user's current settings: enabled? -> allows access?
-    if ([CLLocationManager locationServicesEnabled]) {
-        CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
-        if (status == kCLAuthorizationStatusNotDetermined) {
-            [self.locationManager requestWhenInUseAuthorization]; //only request for tracking when app opens
-            
-        }
-    }
-    
     [self loadImagelocation];
 }
+
 
 //changes made when user changes authorization status
 
@@ -66,22 +60,32 @@
 
 //zoom to show user's current location when user didUpdateLocations
 
-- (void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-    
-    CLLocation *currentLocation = [locations lastObject]; //most recent update
-    
-    if (!self.setInitialLocation) {
-        self.setInitialLocation = YES; //make sure this is only called once
-        MKCoordinateRegion region = MKCoordinateRegionMake(currentLocation.coordinate, MKCoordinateSpanMake(0.01, 0.01));
-        [self.mapView setRegion:region animated:YES];
-        
-    }
-}
+//- (void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+//    
+//    self.currentLocation = [locations lastObject]; //most recent update
+
+//    if (!self.setInitialLocation) {
+//        self.setInitialLocation = YES; //make sure this is only called once
+//        MKCoordinateRegion region = MKCoordinateRegionMake(currentLocation.coordinate, MKCoordinateSpanMake(0.01, 0.01));
+//        [self.mapView setRegion:region animated:YES];
+//        
+//    }
+//}
 
 //show user's current location
 
 - (IBAction)locateUser:(id)sender {
     
+    
+    //check user's current settings: enabled? -> allows access?
+    if ([CLLocationManager locationServicesEnabled]) {
+        CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
+        if (status == kCLAuthorizationStatusNotDetermined) {
+            [self.locationManager requestWhenInUseAuthorization]; //only request for tracking when app opens
+            
+        }
+    }
+
     if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied) {
         
         //if user wants to be tracked but denied permission to be tracked, make alert popup to open settings
@@ -102,15 +106,22 @@
         
     }
     
-    if (self.mapView.userLocation) {
-        NSLog(@"TRIES to print userlocation %@", self.mapView.userLocation);
-        //Check if user is already zoomed in to current location
-        [self.mapView setCenterCoordinate:self.mapView.userLocation.coordinate animated:YES];
-    }
+    [self regionForWorld];
+
+    self.mapView.showsUserLocation = YES;
+    [self.mapView setCenterCoordinate:self.mapView.userLocation.coordinate];
+
 }
 
+- (IBAction)goToImageAction:(id)sender {
+    
+    [self loadImagelocation];
+    
+}
 
-- (void) loadImagelocation {
+- (MKPointAnnotation*)loadImagelocation {
+    
+    [self regionForWorld];
         
     MKPointAnnotation *marker = [[MKPointAnnotation alloc] init];
 
@@ -120,33 +131,54 @@
     marker.subtitle = [NSString stringWithFormat:@"Date taken: %@", self.detailItem.dateTaken];
     [self.mapView addAnnotation:marker];
     [self.mapView setCenterCoordinate: marker.coordinate animated:YES];
-    
+    return marker;
 }
 
 
-//- (MKAnnotationView*)mapView:(MKMapView*)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
-//    if (annotation == self.mapView.userLocation) {
-//        return nil;
-//    }
-//    
-//    MKAnnotationView *annotationView = [mapView dequeueReusableAnnotationViewWithIdentifier:@"TheatrePin"];
-//    if (!annotationView) {
-//        annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"TheatrePin"];
-//        //resize image
-//        CGSize tempSize = CGSizeMake(25, 32);
-//        UIImage *tempImage = [UIImage imageNamed:@"angry_pusheen"];
-//        UIGraphicsBeginImageContext(tempSize);
-//        [tempImage drawInRect:CGRectMake(0,0,tempSize.width,tempSize.height)];
-//        annotationView.image = UIGraphicsGetImageFromCurrentImageContext();
-//        UIGraphicsEndImageContext();
-//        
-//        annotationView.centerOffset = CGPointMake(0, -annotationView.image.size.height/2);
-//        //account for size difference of custom image vs original pin
-//        //x coordinate is fine, change the placement for y coordinate
-//        annotationView.canShowCallout = YES;
-//    }
-//    
-//    return annotationView;
-//}
+- (IBAction)zoomAction:(UIBarButtonItem*)sender {
+    
+    if (self.tapCount %2 == 0) {
+        //zoom out
+        MKCoordinateRegion region = [self regionForWorld];
+        [self.mapView setRegion:region animated:YES];
+        
+    } else {
+    MKPointAnnotation *marker = [self loadImagelocation];
+    
+    MKCoordinateRegion region = MKCoordinateRegionMake(marker.coordinate, MKCoordinateSpanMake(0.1, 0.1));
+    [self.mapView setRegion:region animated:YES];
+    
+    }
+    self.tapCount ++;
+}
+
+- (MKCoordinateRegion)regionForWorld {
+    return MKCoordinateRegionForMapRect(MKMapRectWorld);
+}
+
+- (MKAnnotationView*)mapView:(MKMapView*)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
+    if (annotation == self.mapView.userLocation) {
+        return nil;
+    }
+    
+    MKAnnotationView *annotationView = [mapView dequeueReusableAnnotationViewWithIdentifier:@"TheatrePin"];
+    if (!annotationView) {
+        annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"TheatrePin"];
+        //resize image
+        CGSize tempSize = CGSizeMake(32, 26);
+        UIImage *tempImage = [UIImage imageNamed:@"pointer"];
+        UIGraphicsBeginImageContext(tempSize);
+        [tempImage drawInRect:CGRectMake(0,0,tempSize.width,tempSize.height)];
+        annotationView.image = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+
+        annotationView.centerOffset = CGPointMake(0, -annotationView.image.size.height/2);
+        //account for size difference of custom image vs original pin
+        //x coordinate is fine, change the placement for y coordinate
+        annotationView.canShowCallout = YES;
+    }
+    
+    return annotationView;
+}
 
 @end
