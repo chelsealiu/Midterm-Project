@@ -10,4 +10,9 @@
 
 @interface FavouritesViewController : UIViewController
 
+
+@property (strong, nonatomic) NSMutableArray *arrayItem;
+
+
+
 @end

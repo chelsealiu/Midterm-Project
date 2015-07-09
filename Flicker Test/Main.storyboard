@@ -38,6 +38,9 @@
                                     <segment title="Tags"/>
                                     <segment title="Username"/>
                                 </segments>
+                                <connections>
+                                    <action selector="segmentControlChanged:" destination="gJs-nT-Ibs" eventType="valueChanged" id="zkS-nU-Ql8"/>
+                                </connections>
                             </segmentedControl>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="YLv-E8-1c8">
                                 <rect key="frame" x="0.0" y="64" width="320" height="44"/>
@@ -99,7 +102,7 @@
                                     <outlet property="delegate" destination="gJs-nT-Ibs" id="Upa-vf-pxy"/>
                                 </connections>
                             </collectionView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eY6-bo-mjO">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eY6-bo-mjO">
                                 <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                                 <items>
                                     <barButtonItem title="Favourites" id="4lG-lK-BkF">
@@ -114,12 +117,15 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Xav-m5-QWe" secondAttribute="trailing" id="115-HK-uoe"/>
                             <constraint firstItem="5LP-rB-8dw" firstAttribute="leading" secondItem="pRN-LS-mD5" secondAttribute="leading" id="7uW-Lx-sW5"/>
+                            <constraint firstItem="VGa-3M-kUt" firstAttribute="top" secondItem="eY6-bo-mjO" secondAttribute="bottom" id="CIt-Nk-pKe"/>
                             <constraint firstItem="Xav-m5-QWe" firstAttribute="top" secondItem="YLv-E8-1c8" secondAttribute="bottom" id="Gsc-7R-uXc"/>
+                            <constraint firstAttribute="trailing" secondItem="eY6-bo-mjO" secondAttribute="trailing" id="HI0-3a-faZ"/>
                             <constraint firstItem="YLv-E8-1c8" firstAttribute="top" secondItem="mT5-F3-0YV" secondAttribute="bottom" id="JHy-X5-55r"/>
                             <constraint firstAttribute="trailing" secondItem="5LP-rB-8dw" secondAttribute="trailing" id="Pey-DS-QLv"/>
                             <constraint firstItem="YLv-E8-1c8" firstAttribute="leading" secondItem="pRN-LS-mD5" secondAttribute="leading" id="jk9-WW-mTd"/>
                             <constraint firstAttribute="trailing" secondItem="YLv-E8-1c8" secondAttribute="trailing" id="phi-Zj-Z1q"/>
                             <constraint firstItem="5LP-rB-8dw" firstAttribute="top" secondItem="Xav-m5-QWe" secondAttribute="bottom" constant="3" id="s0f-VF-c2m"/>
+                            <constraint firstItem="eY6-bo-mjO" firstAttribute="leading" secondItem="pRN-LS-mD5" secondAttribute="leading" id="wh9-CS-0yd"/>
                             <constraint firstItem="VGa-3M-kUt" firstAttribute="top" secondItem="5LP-rB-8dw" secondAttribute="bottom" id="y2Z-6p-jIc"/>
                             <constraint firstItem="Xav-m5-QWe" firstAttribute="leading" secondItem="pRN-LS-mD5" secondAttribute="leading" id="yf1-f5-v11"/>
                         </constraints>
@@ -167,7 +173,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="240" height="97"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="239.5" height="97"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show Existing Anaglyphs" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e9d-uO-kYa">
@@ -199,7 +205,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="240" height="97"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="239.5" height="97"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Combine images and make them 3D!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kFV-Yo-GsE">
@@ -222,7 +228,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="240" height="97"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="239.5" height="97"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Make your own 3D image!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wR4-EP-zhT">
@@ -274,27 +280,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DAA-16-8dG">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="llf-Bz-YXI">
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="5n6-oE-dlc"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem image="heart" id="jcq-Br-I1N">
+                                        <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="addToFavourite:" destination="W1N-Cr-mEp" id="0pB-SN-uKz"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DAA-16-8dG">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
                                 <subviews>
                                     <imageView clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zbt-pu-WxR">
-                                        <rect key="frame" x="0.0" y="101" width="320" height="365"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="365" id="nzk-6W-UQz"/>
-                                        </constraints>
+                                        <rect key="frame" x="0.0" y="64" width="320" height="460"/>
                                     </imageView>
-                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="llf-Bz-YXI">
-                                        <rect key="frame" x="0.0" y="524" width="320" height="44"/>
-                                        <items>
-                                            <barButtonItem title="Item" id="jcq-Br-I1N"/>
-                                        </items>
-                                    </toolbar>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="zbt-pu-WxR" secondAttribute="bottom" constant="102" id="6Vb-np-19L"/>
                                     <constraint firstItem="zbt-pu-WxR" firstAttribute="centerX" secondItem="DAA-16-8dG" secondAttribute="centerX" id="YRC-Od-DGE"/>
                                     <constraint firstItem="zbt-pu-WxR" firstAttribute="leading" secondItem="DAA-16-8dG" secondAttribute="leading" id="v1m-8W-cvZ"/>
-                                    <constraint firstItem="zbt-pu-WxR" firstAttribute="top" secondItem="DAA-16-8dG" secondAttribute="top" constant="101" id="v9h-DO-7E2"/>
                                     <constraint firstAttribute="trailing" secondItem="zbt-pu-WxR" secondAttribute="trailing" id="vJ6-X8-58F"/>
                                 </constraints>
                                 <connections>
@@ -304,14 +313,21 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="bAg-gN-7sj" firstAttribute="top" secondItem="DAA-16-8dG" secondAttribute="bottom" id="EBP-jC-M05"/>
+                            <constraint firstItem="zbt-pu-WxR" firstAttribute="top" secondItem="BMA-SN-ZEE" secondAttribute="bottom" id="5X7-Bv-rnf"/>
+                            <constraint firstAttribute="bottom" secondItem="llf-Bz-YXI" secondAttribute="bottom" id="A7D-fU-XcC"/>
+                            <constraint firstItem="llf-Bz-YXI" firstAttribute="leading" secondItem="Uwi-Po-QUY" secondAttribute="leading" id="ET8-ZK-2gv"/>
                             <constraint firstItem="DAA-16-8dG" firstAttribute="leading" secondItem="Uwi-Po-QUY" secondAttribute="leading" id="HJ7-hz-DLi"/>
+                            <constraint firstItem="bAg-gN-7sj" firstAttribute="top" secondItem="zbt-pu-WxR" secondAttribute="bottom" constant="44" id="PKu-H2-ddx"/>
                             <constraint firstItem="DAA-16-8dG" firstAttribute="top" secondItem="Uwi-Po-QUY" secondAttribute="top" id="XJe-26-uJq"/>
+                            <constraint firstAttribute="trailing" secondItem="llf-Bz-YXI" secondAttribute="trailing" id="XP2-c2-KJf"/>
+                            <constraint firstItem="llf-Bz-YXI" firstAttribute="top" secondItem="DAA-16-8dG" secondAttribute="bottom" id="c15-qr-Col"/>
                             <constraint firstAttribute="trailing" secondItem="DAA-16-8dG" secondAttribute="trailing" id="gpD-V4-sMN"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" id="IAX-Hz-Ioa"/>
                     <connections>
+                        <outlet property="heartButton" destination="jcq-Br-I1N" id="oy1-i1-ry4"/>
                         <outlet property="imageView" destination="zbt-pu-WxR" id="3uh-sF-reh"/>
                         <outlet property="scrollView" destination="DAA-16-8dG" id="ALQ-hj-iRw"/>
                         <segue destination="8lj-fS-ZT1" kind="push" identifier="showMap" id="lHv-IY-fgx"/>
@@ -333,8 +349,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="C5v-ak-4RC">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lb7-F4-oZc">
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <items/>
+                            </toolbar>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="C5v-ak-4RC">
+                                <rect key="frame" x="0.0" y="64" width="320" height="460"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="WWv-bg-YER">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -342,14 +363,28 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FavouriteCell" id="IB6-1a-Igm">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FavouriteCell" id="IB6-1a-Igm" customClass="AnaglyphCell">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fGv-Pv-Bal">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                </imageView>
+                                            </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <constraints>
+                                            <constraint firstItem="fGv-Pv-Bal" firstAttribute="top" secondItem="IB6-1a-Igm" secondAttribute="top" id="EkK-pK-1ld"/>
+                                            <constraint firstItem="fGv-Pv-Bal" firstAttribute="leading" secondItem="IB6-1a-Igm" secondAttribute="leading" id="Hy1-nR-EtR"/>
+                                            <constraint firstAttribute="trailing" secondItem="fGv-Pv-Bal" secondAttribute="trailing" id="Oht-In-5W1"/>
+                                            <constraint firstAttribute="bottom" secondItem="fGv-Pv-Bal" secondAttribute="bottom" id="YsS-z8-t5m"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="favImageView" destination="fGv-Pv-Bal" id="WG7-Sn-XIq"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
@@ -357,19 +392,15 @@
                                     <outlet property="delegate" destination="Bm4-R6-vkv" id="KxL-C8-Dhr"/>
                                 </connections>
                             </collectionView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lb7-F4-oZc">
-                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
-                                <items>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Jdg-Jh-AXv"/>
-                                    <barButtonItem image="heart" id="g27-u8-FQJ"/>
-                                </items>
-                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="d9r-dI-P1H" firstAttribute="top" secondItem="lb7-F4-oZc" secondAttribute="bottom" id="6x8-cV-wwL"/>
+                            <constraint firstAttribute="trailing" secondItem="lb7-F4-oZc" secondAttribute="trailing" id="EML-FB-Pxj"/>
                             <constraint firstAttribute="trailing" secondItem="C5v-ak-4RC" secondAttribute="trailing" id="M42-My-LbJ"/>
-                            <constraint firstItem="C5v-ak-4RC" firstAttribute="top" secondItem="Aom-6b-qkh" secondAttribute="top" id="Uf4-b2-aEB"/>
+                            <constraint firstItem="lb7-F4-oZc" firstAttribute="leading" secondItem="Aom-6b-qkh" secondAttribute="leading" id="ZcE-Nx-b3a"/>
                             <constraint firstItem="lb7-F4-oZc" firstAttribute="top" secondItem="C5v-ak-4RC" secondAttribute="bottom" id="jaU-32-o14"/>
+                            <constraint firstItem="C5v-ak-4RC" firstAttribute="top" secondItem="fo6-kr-CWG" secondAttribute="bottom" id="sC9-5q-C6T"/>
                             <constraint firstItem="C5v-ak-4RC" firstAttribute="leading" secondItem="Aom-6b-qkh" secondAttribute="leading" id="wxv-QJ-qkS"/>
                         </constraints>
                     </view>

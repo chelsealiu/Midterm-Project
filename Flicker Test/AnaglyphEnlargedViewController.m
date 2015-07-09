@@ -13,6 +13,7 @@
 
 @property (strong, nonatomic) NSString *buttonTitle;
 -(void)showInfo;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *heartButton;
 
 @end
 
@@ -28,6 +29,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self updateTintColour];
     
     UIBarButtonItem *mapButton=[[UIBarButtonItem alloc] initWithTitle:@"Show On Map" style:UIBarButtonItemStylePlain target:self action:@selector(shouldPerformSegueWithIdentifier:sender:)];
     
@@ -62,6 +64,21 @@
 
 - (UIImageView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
     return self.imageView;
+}
+
+- (IBAction)addToFavourite:(UIBarButtonItem*)sender {
+    
+    self.detailItem.isFavourite = !self.detailItem.isFavourite;
+    [self updateTintColour];
+}
+
+-(void) updateTintColour {
+    
+    if (!self.detailItem.isFavourite) {
+        [self.heartButton setTintColor:nil];
+    } else {
+        [self.heartButton setTintColor:[UIColor redColor]];
+    }
 }
 
 #pragma mark - Navigation

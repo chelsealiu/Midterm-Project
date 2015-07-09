@@ -7,13 +7,25 @@
 //
 
 #import "FavouritesViewController.h"
+#import "AnaglyphCell.h"
+#import "FlickrPhoto.h"
 
 @interface FavouritesViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
+
+
+
 
 
 @end
 
 @implementation FavouritesViewController
+
+- (void)setDetailItem:(NSMutableArray*)newDetailItem {
+    if (_arrayItem != newDetailItem) {
+        _arrayItem = newDetailItem;
+        
+    }
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -33,18 +45,49 @@
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.detailItem.count;
+    NSLog(@"number of favourites: %lu", (unsigned long)self.arrayItem.count);
+    return self.arrayItem.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"FavouriteCell" forIndexPath:indexPath];
     
-    // Configure the cell
+    AnaglyphCell *anaglyphCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"FavouriteCell" forIndexPath:indexPath];
+    FlickrPhoto *flickrPhoto = self.arrayItem[indexPath.row];
     
-    return cell;
+    NSURL *imageURL = flickrPhoto.photoURL;
+
+    NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithURL:flickrPhoto.photoURL completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        data = [NSData dataWithContentsOfURL: imageURL];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            anaglyphCell.favImageView.image = [UIImage imageWithData:data];
+            
+        });
+    }];
+    
+//    anaglyphCell.task = task; //attach
+    [task resume];
+    
+    return anaglyphCell;
+}
+
+- (CGSize) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return CGSizeMake(170, 170);
 }
 
 
+-(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
+    return 10;
+}
+
+-(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
+    return 10;
+}
+
+-(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
+    return UIEdgeInsetsMake(11, 11, 11, 11);
+}
 
 /*
 #pragma mark - Navigation

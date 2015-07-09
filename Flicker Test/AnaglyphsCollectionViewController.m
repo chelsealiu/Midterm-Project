@@ -10,7 +10,7 @@
 #import "AnaglyphEnlargedViewController.h"
 #import "FlickrPhoto.h"
 #import "AnaglyphCell.h"
-
+#import "FavouritesViewController.h"
 
 @interface AnaglyphsCollectionViewController () <UISearchBarDelegate>
 
@@ -30,26 +30,32 @@
 
 @implementation AnaglyphsCollectionViewController
 
+-(void) viewWillAppear:(BOOL)animated {
+    self.favouriteAnaglyphs = [[NSMutableArray alloc] init];
+    for (FlickrPhoto *photo in self.anaglyphObjects) {
+        if (photo.isFavourite) {
+            [self.favouriteAnaglyphs addObject:photo];
+            NSLog(@"%@", photo);
+        }
+    }
+}
 
+    
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.collectionView setContentOffset:CGPointMake(0, 44)];
-    [self refreshView];
-    self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.collectionView addSubview:self.refreshControl];
-    [self.refreshControl addTarget:self action:@selector(refreshView) forControlEvents:UIControlEventValueChanged];
-    self.collectionView.alwaysBounceVertical = YES;
-    
-    
-}
-
--(IBAction)refreshView {
-    
-    [self.refreshControl beginRefreshing];
+//    [self refreshView];
+//    self.refreshControl = [[UIRefreshControl alloc] init];
+//    [self.collectionView addSubview:self.refreshControl];
+//    [self.refreshControl addTarget:self action:@selector(refreshView) forControlEvents:UIControlEventValueChanged];
+//    self.collectionView.alwaysBounceVertical = YES;
+////    
+//    
+//    
+//    [self.refreshControl beginRefreshing];
     
     if ([self.anaglyphObjects count] != 0) {
         return;
-        //exit early/no network request if pictures already exist
     }
     
     //network call
@@ -189,9 +195,13 @@
         NSIndexPath *indexPath = [self.collectionView indexPathForCell:sender];
         FlickrPhoto *photoClicked = self.anaglyphObjects[indexPath.row];
         [[segue destinationViewController] setDetailItem: photoClicked];
+    } else if ([[segue identifier] isEqualToString:@"segueToFavourites"]) {
+        FavouritesViewController *newVC = [[FavouritesViewController alloc] init];
+        newVC = segue.destinationViewController;
+        [[segue destinationViewController] setArrayItem:self.favouriteAnaglyphs];
+        
     }
 }
-
 
 
 #pragma mark Search Controller
@@ -202,10 +212,14 @@
     [searchBar resignFirstResponder];
 }
 
+- (IBAction)segmentControlChanged:(id)sender {
+    
+    [self searchBar:self.searchBar textDidChange:self.searchBar.text];
+}
 
 -(void)searchBar:(UISearchBar*)searchBar textDidChange:(NSString*)text {
     NSString *searchString = self.searchBar.text;
-    
+
     if ([searchString isEqualToString:@""]) {
         return;
     } else if (self.segmentedControl.selectedSegmentIndex == 0) {

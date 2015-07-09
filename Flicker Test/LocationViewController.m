@@ -106,8 +106,6 @@
         
     }
     
-    [self regionForWorld];
-
     self.mapView.showsUserLocation = YES;
     [self.mapView setCenterCoordinate:self.mapView.userLocation.coordinate];
 
@@ -121,8 +119,6 @@
 
 - (MKPointAnnotation*)loadImagelocation {
     
-    [self regionForWorld];
-        
     MKPointAnnotation *marker = [[MKPointAnnotation alloc] init];
 
     marker.coordinate = CLLocationCoordinate2DMake([self.detailItem.latitude doubleValue], [self.detailItem.longitude doubleValue]);
@@ -137,18 +133,18 @@
 
 - (IBAction)zoomAction:(UIBarButtonItem*)sender {
     
-    if (self.tapCount %2 == 0) {
-        //zoom out
-        MKCoordinateRegion region = [self regionForWorld];
-        [self.mapView setRegion:region animated:YES];
-        
-    } else {
+//    
+//    if (self.tapCount %2 == 0) {
+//        //zoom out
+//        MKCoordinateRegion region = [self regionForWorld];
+//        [self.mapView setRegion:region animated:YES];
+//        
+//    } else {
     MKPointAnnotation *marker = [self loadImagelocation];
     
     MKCoordinateRegion region = MKCoordinateRegionMake(marker.coordinate, MKCoordinateSpanMake(0.1, 0.1));
     [self.mapView setRegion:region animated:YES];
     
-    }
     self.tapCount ++;
 }
 
@@ -173,8 +169,7 @@
         UIGraphicsEndImageContext();
 
         annotationView.centerOffset = CGPointMake(0, -annotationView.image.size.height/2);
-        //account for size difference of custom image vs original pin
-        //x coordinate is fine, change the placement for y coordinate
+
         annotationView.canShowCallout = YES;
     }
     

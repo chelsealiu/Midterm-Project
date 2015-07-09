@@ -21,5 +21,6 @@
 @property (strong, nonatomic) NSString *title;
 @property (strong, nonatomic) NSArray *tags;
 @property (strong, nonatomic) NSString *username;
+@property (nonatomic) BOOL isFavourite;
 
 @end
