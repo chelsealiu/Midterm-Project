@@ -15,13 +15,8 @@
 @interface AnaglyphsCollectionViewController () <UISearchBarDelegate>
 
 @property (nonatomic, strong) NSArray *anaglyphObjects;
-@property (nonatomic, strong) UISearchController *searchController;
 @property(nonatomic, strong) NSArray *allObjects;
 @property(nonatomic, strong) NSMutableArray *favouriteAnaglyphs;
-@property (nonatomic, strong) UITextField *textField;
-@property (nonatomic) BOOL finishedEditingSearch;
-@property (nonatomic, strong)  UITextField *textFieldInput;
-@property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
@@ -40,25 +35,28 @@
     }
 }
 
+- (IBAction)refreshImages:(id)sender {
+    
+
+    [self networkCall];
+    
+    
+}
+
+
     
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.collectionView setContentOffset:CGPointMake(0, 44)];
-//    [self refreshView];
-//    self.refreshControl = [[UIRefreshControl alloc] init];
-//    [self.collectionView addSubview:self.refreshControl];
-//    [self.refreshControl addTarget:self action:@selector(refreshView) forControlEvents:UIControlEventValueChanged];
-//    self.collectionView.alwaysBounceVertical = YES;
-////    
-//    
-//    
-//    [self.refreshControl beginRefreshing];
+    [self networkCall];
     
-    if ([self.anaglyphObjects count] != 0) {
-        return;
-    }
     
-    //network call
+}
+
+
+-(void) networkCall {
+    
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES]; //shows spinny thing on top left corner
     
     int random = arc4random_uniform(365); //generate random page every time
 
@@ -109,7 +107,10 @@
                 self.anaglyphObjects = [[NSArray alloc] initWithArray: tempAnaglyphArray]; //array of photoURL strings
                 self.allObjects = self.anaglyphObjects;
                 [self.collectionView reloadData];
-                [self.refreshControl endRefreshing];
+//                [self.refreshControl endRefreshing];
+                
+                
+                [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
                 
             });
         }

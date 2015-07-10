@@ -32,7 +32,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Xav-m5-QWe">
-                                <rect key="frame" x="0.0" y="108" width="320" height="29"/>
+                                <rect key="frame" x="0.0" y="110" width="320" height="29"/>
                                 <segments>
                                     <segment title="Title"/>
                                     <segment title="Tags"/>
@@ -50,7 +50,7 @@
                                 </connections>
                             </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5LP-rB-8dw">
-                                <rect key="frame" x="0.0" y="139" width="320" height="429"/>
+                                <rect key="frame" x="0.0" y="140" width="320" height="428"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aEb-F0-lIR">
                                     <size key="itemSize" width="100" height="86"/>
@@ -118,13 +118,13 @@
                             <constraint firstAttribute="trailing" secondItem="Xav-m5-QWe" secondAttribute="trailing" id="115-HK-uoe"/>
                             <constraint firstItem="5LP-rB-8dw" firstAttribute="leading" secondItem="pRN-LS-mD5" secondAttribute="leading" id="7uW-Lx-sW5"/>
                             <constraint firstItem="VGa-3M-kUt" firstAttribute="top" secondItem="eY6-bo-mjO" secondAttribute="bottom" id="CIt-Nk-pKe"/>
-                            <constraint firstItem="Xav-m5-QWe" firstAttribute="top" secondItem="YLv-E8-1c8" secondAttribute="bottom" id="Gsc-7R-uXc"/>
+                            <constraint firstItem="Xav-m5-QWe" firstAttribute="top" secondItem="YLv-E8-1c8" secondAttribute="bottom" constant="2" id="Gsc-7R-uXc"/>
                             <constraint firstAttribute="trailing" secondItem="eY6-bo-mjO" secondAttribute="trailing" id="HI0-3a-faZ"/>
                             <constraint firstItem="YLv-E8-1c8" firstAttribute="top" secondItem="mT5-F3-0YV" secondAttribute="bottom" id="JHy-X5-55r"/>
                             <constraint firstAttribute="trailing" secondItem="5LP-rB-8dw" secondAttribute="trailing" id="Pey-DS-QLv"/>
                             <constraint firstItem="YLv-E8-1c8" firstAttribute="leading" secondItem="pRN-LS-mD5" secondAttribute="leading" id="jk9-WW-mTd"/>
                             <constraint firstAttribute="trailing" secondItem="YLv-E8-1c8" secondAttribute="trailing" id="phi-Zj-Z1q"/>
-                            <constraint firstItem="5LP-rB-8dw" firstAttribute="top" secondItem="Xav-m5-QWe" secondAttribute="bottom" constant="3" id="s0f-VF-c2m"/>
+                            <constraint firstItem="5LP-rB-8dw" firstAttribute="top" secondItem="Xav-m5-QWe" secondAttribute="bottom" constant="2" id="s0f-VF-c2m"/>
                             <constraint firstItem="eY6-bo-mjO" firstAttribute="leading" secondItem="pRN-LS-mD5" secondAttribute="leading" id="wh9-CS-0yd"/>
                             <constraint firstItem="VGa-3M-kUt" firstAttribute="top" secondItem="5LP-rB-8dw" secondAttribute="bottom" id="y2Z-6p-jIc"/>
                             <constraint firstItem="Xav-m5-QWe" firstAttribute="leading" secondItem="pRN-LS-mD5" secondAttribute="leading" id="yf1-f5-v11"/>
@@ -133,7 +133,7 @@
                     <navigationItem key="navigationItem" id="vlh-jB-nXr">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="refresh" id="m8Y-76-6Up">
                             <connections>
-                                <action selector="refreshView" destination="gJs-nT-Ibs" id="hwI-hc-auB"/>
+                                <action selector="refreshImages:" destination="gJs-nT-Ibs" id="YbO-JD-VCb"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -481,7 +481,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="heart" width="42" height="42"/>
+        <image name="heart" width="43" height="43"/>
         <image name="whiteicon.png" width="84" height="72"/>
         <image name="zoom_in" width="28" height="28"/>
     </resources>
